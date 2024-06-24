@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctur5gofvbn1y"]
+
+[ext_resource type="PackedScene" uid="uid://c7y6hcyk8waoh" path="res://scenes/black block.tscn" id="1_ifiq5"]
+[ext_resource type="PackedScene" uid="uid://d4b6ut2biykln" path="res://scenes/stick figure.tscn" id="2_vka8b"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Node2D" parent="." instance=ExtResource("1_ifiq5")]
+position = Vector2(32, 608)
+
+[node name="Node2D2" parent="." instance=ExtResource("1_ifiq5")]
+position = Vector2(96, 608)
+
+[node name="Node2D3" parent="." instance=ExtResource("1_ifiq5")]
+position = Vector2(160, 608)
+
+[node name="Node2D4" parent="." instance=ExtResource("1_ifiq5")]
+position = Vector2(224, 608)
+
+[node name="Node2D5" parent="." instance=ExtResource("1_ifiq5")]
+position = Vector2(288, 608)
+
+[node name="Node2D6" parent="." instance=ExtResource("1_ifiq5")]
+position = Vector2(352, 608)
+
+[node name="Node2D7" parent="." instance=ExtResource("1_ifiq5")]
+position = Vector2(416, 608)
+
+[node name="Node2D8" parent="." instance=ExtResource("1_ifiq5")]
+position = Vector2(480, 608)
+
+[node name="Node2D9" parent="." instance=ExtResource("1_ifiq5")]
+position = Vector2(544, 608)
+
+[node name="Node2D10" parent="." instance=ExtResource("1_ifiq5")]
+position = Vector2(608, 608)
+
+[node name="Node2D11" parent="." instance=ExtResource("1_ifiq5")]
+position = Vector2(672, 608)
+
+[node name="Node2D12" parent="." instance=ExtResource("1_ifiq5")]
+position = Vector2(736, 608)
+
+[node name="Node2D13" parent="." instance=ExtResource("1_ifiq5")]
+position = Vector2(800, 608)
+
+[node name="Node2D14" parent="." instance=ExtResource("1_ifiq5")]
+position = Vector2(864, 608)
+
+[node name="Node2D15" parent="." instance=ExtResource("1_ifiq5")]
+position = Vector2(928, 608)
+
+[node name="Node2D16" parent="." instance=ExtResource("1_ifiq5")]
+position = Vector2(992, 608)
+
+[node name="Node2D17" parent="." instance=ExtResource("1_ifiq5")]
+position = Vector2(1056, 608)
+
+[node name="Node2D18" parent="." instance=ExtResource("1_ifiq5")]
+position = Vector2(1120, 608)
+
+[node name="Node2D19" parent="." instance=ExtResource("1_ifiq5")]
+position = Vector2(1120, 544)
+
+[node name="Node2D20" parent="." instance=ExtResource("1_ifiq5")]
+position = Vector2(1120, 480)
+
+[node name="Node2D21" parent="." instance=ExtResource("1_ifiq5")]
+position = Vector2(32, 544)
+
+[node name="Node2D22" parent="." instance=ExtResource("1_ifiq5")]
+position = Vector2(32, 480)
+
+[node name="Node2D23" parent="." instance=ExtResource("2_vka8b")]
+position = Vector2(544, 480)
