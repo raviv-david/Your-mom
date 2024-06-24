@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4b6ut2biykln"]
+
+[ext_resource type="Texture2D" uid="uid://b17wmmu8vthnj" path="res://sprites/32 bit stick figure.png" id="1_2qv4x"]
+[ext_resource type="Script" path="res://scripts/playerMovement.gd" id="1_gkeca"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ldgo5"]
+radius = 16.0
+height = 64.0
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_gkeca")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CapsuleShape2D_ldgo5")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(2, 0)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_2qv4x")
