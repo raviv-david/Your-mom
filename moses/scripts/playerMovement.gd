@@ -1,49 +1,37 @@
-extends RigidBody2D
+extends CharacterBody2D
 
-var MAX_VELOCITY = 3
 
-var speed = 5
-var velocity = 0
 
-func _ready():
-	pass # Replace with function body.
+const SPEED = 220.0
+const JUMP_VELOCITY = -350.0
 
-func _process(delta):
-	# processes player movement input
-	var keyPressed = processKeyPress(delta)
+var jumps = 1
+
+# Get the gravity from the project settings to be synced with RigidBody nodes.
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+
+func _physics_process(delta):
+	# Add the gravity.
+	if not is_on_floor():
+		velocity.y += gravity * delta
 	
-	# slows the player down if hes not trying to move
-	if (!keyPressed[0]):
-		slowDown()
-	print("v = ", velocity)
-	position.x += velocity
-	# causes the player to slow down quicker if he's pressing the button opposite to the current movement
-	if (keyPressed[0]):
-		if (keyPressed[1] == 'd' && velocity < -0.1):
-			slowDown()
-		print("v = ", velocity)
-		if (keyPressed[1] == 'a' && velocity > 0.1):
-			slowDown()
+	if is_on_floor():
+		jumps = 1
+		
+	# Handle jump.
+	if Input.is_action_just_pressed("moveJump") and jumps > 0:
+		velocity.y = JUMP_VELOCITY
+		jumps -= 1
+		
+	
 
-func processKeyPress(delta):
-	var oldVelocity = velocity
-	var key = ''
-	if Input.is_action_pressed("dKeyPress"):
-		scale.x = 1
-		key = 'd'
-		if velocity < MAX_VELOCITY:
-			velocity += speed * delta
-			print("key = d")
-	if Input.is_action_pressed("aKeyPress"):
-		scale.x = -1
-		key = 'a'
-		if velocity > MAX_VELOCITY * -1:
-			velocity -= speed * delta
-			print("key = a")
-	return [oldVelocity != velocity, key]
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var direction = Input.get_axis("moveLeft", "moveRight")
+	if direction:
+		velocity.x = direction * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED/13)
 
-func slowDown():
-	velocity /= 1.065
-	if (-0.2 < velocity && velocity < 0.2):
-		velocity = 0
-	print("slowDown")
+	move_and_slide()
