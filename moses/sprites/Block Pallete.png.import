@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnb7po07bqix4"
-path="res://.godot/imported/Big stick figure.png-1163202bb24f4dfc9cd79fffa1619ea2.ctex"
+uid="uid://sfay6vp7pxmt"
+path="res://.godot/imported/Block Pallete.png-0b5b42be9198613bcc9f77db9e826acd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Big stick figure.png"
-dest_files=["res://.godot/imported/Big stick figure.png-1163202bb24f4dfc9cd79fffa1619ea2.ctex"]
+source_file="res://sprites/Block Pallete.png"
+dest_files=["res://.godot/imported/Block Pallete.png-0b5b42be9198613bcc9f77db9e826acd.ctex"]
 
 [params]
 

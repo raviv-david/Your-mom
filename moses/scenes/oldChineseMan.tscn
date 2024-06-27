@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://d4b6ut2biykln"]
+[gd_scene load_steps=5 format=3 uid="uid://d4b6ut2biykln"]
 
 [ext_resource type="Script" path="res://scripts/playerMovement.gd" id="1_gkeca"]
 [ext_resource type="Texture2D" uid="uid://n3mugbhdglou" path="res://sprites/oldChineseMan.png" id="2_xu4lb"]
@@ -7,7 +7,9 @@
 radius = 5.0
 height = 22.0
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_1pwtl"]
+
+[node name="oldChineseMan" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("1_gkeca")
@@ -18,3 +20,6 @@ texture = ExtResource("2_xu4lb")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, 5)
 shape = SubResource("CapsuleShape2D_ldgo5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+sprite_frames = SubResource("SpriteFrames_1pwtl")

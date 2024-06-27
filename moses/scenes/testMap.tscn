@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ctur5gofvbn1y"]
 
-[ext_resource type="PackedScene" uid="uid://d4b6ut2biykln" path="res://scenes/old chinese man.tscn" id="2_vka8b"]
+[ext_resource type="PackedScene" uid="uid://d4b6ut2biykln" path="res://scenes/oldChineseMan.tscn" id="2_vka8b"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8v6sd"]
 
