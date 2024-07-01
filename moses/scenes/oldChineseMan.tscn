@@ -1,21 +1,38 @@
-[gd_scene load_steps=5 format=3 uid="uid://d4b6ut2biykln"]
+[gd_scene load_steps=7 format=3 uid="uid://d4b6ut2biykln"]
 
 [ext_resource type="Script" path="res://scripts/playerMovement.gd" id="1_gkeca"]
-[ext_resource type="Texture2D" uid="uid://n3mugbhdglou" path="res://sprites/oldChineseMan.png" id="2_xu4lb"]
+[ext_resource type="Texture2D" uid="uid://bi6kp8togw5pq" path="res://sprites/OldChineseManAnimations.png" id="2_wxx1i"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ldgo5"]
 radius = 5.0
 height = 22.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8qlp"]
+atlas = ExtResource("2_wxx1i")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2oqm"]
+atlas = ExtResource("2_wxx1i")
+region = Rect2(32, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_1pwtl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8qlp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2oqm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
 
 [node name="oldChineseMan" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("1_gkeca")
-
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-texture = ExtResource("2_xu4lb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, 5)
@@ -23,3 +40,4 @@ shape = SubResource("CapsuleShape2D_ldgo5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 sprite_frames = SubResource("SpriteFrames_1pwtl")
+frame_progress = 0.48309

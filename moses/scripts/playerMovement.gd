@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
-const SPEED = 13
+const SPEED = 500
 const MAX_SPEED = 130
 const JUMP_VELOCITY = -193
-const MAX_FALLING_SPEED = 700
+const MAX_FALLING_SPEED = 650
 const GRAVITY = 450
 
 var jumps = 1
@@ -26,16 +26,22 @@ func _physics_process(delta):
 	var direction = Input.get_axis("moveLeft", "moveRight")
 	if direction != 0:
 		if !is_on_floor():
-			velocity.x += (direction * SPEED) / 2.5
+			velocity.x += ((direction * SPEED) / 2) * delta
 		else:
-			velocity.x += direction * SPEED
+			if(velocity.x > 0 && direction < 0):
+				velocity.x = move_toward(velocity.x, 0, SPEED/100)
+				print("Slowing down1")
+			elif(velocity.x < 0 && direction > 0):
+				#velocity.x = move_toward(velocity.x, 0, SPEED/100)
+				print("Slowing down2")
+			velocity.x += (direction * SPEED) * delta
 		velocity.x = clamp(velocity.x, -MAX_SPEED, MAX_SPEED)
 		
 		# Adjust character sprite direction
 		if $Sprite2D:
 			$Sprite2D.flip_h = direction < 0
 	else: # Deceleration
-		velocity.x = move_toward(velocity.x, 0, SPEED/2)
+		velocity.x = move_toward(velocity.x, 0, SPEED/50)
 	
 	# Apply movement
 	move_and_slide()
