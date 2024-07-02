@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://ctur5gofvbn1y"]
 
-[ext_resource type="Texture2D" uid="uid://sfay6vp7pxmt" path="res://sprites/Block Pallete.png" id="2_dk8gd"]
+[ext_resource type="Texture2D" uid="uid://jn4od1fb30fb" path="res://sprites/Block Pallete.png" id="2_dk8gd"]
 [ext_resource type="PackedScene" uid="uid://d4b6ut2biykln" path="res://scenes/oldChineseMan.tscn" id="2_vka8b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fhcuu"]

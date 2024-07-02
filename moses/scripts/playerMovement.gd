@@ -38,8 +38,8 @@ func _physics_process(delta):
 		velocity.x = clamp(velocity.x, -MAX_SPEED, MAX_SPEED)
 		
 		# Adjust character sprite direction
-		if $Sprite2D:
-			$Sprite2D.flip_h = direction < 0
+		if $AnimatedSprite2D:
+			$AnimatedSprite2D.flip_h = direction < 0
 	else: # Deceleration
 		velocity.x = move_toward(velocity.x, 0, SPEED/50)
 	
