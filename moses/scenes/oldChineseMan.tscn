@@ -33,6 +33,7 @@ animations = [{
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("1_gkeca")
+DOUBLE_JUMP = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, 5)

@@ -6,7 +6,10 @@ const JUMP_VELOCITY = -193
 const MAX_FALLING_SPEED = 650
 const GRAVITY = 450
 
-var jumps = 1
+@export var DOUBLE_JUMP = false
+
+var may_jump = false
+
 
 func _physics_process(delta):
 	# Apply gravity
@@ -15,12 +18,19 @@ func _physics_process(delta):
 		velocity.y = clamp(velocity.y, -99999, 175)
 	
 	if is_on_floor(): 
-		jumps = 2
+		may_jump = true
 	
 	# Handle jump
-	if Input.is_action_just_pressed("moveJump") and jumps > 0:
-		velocity.y = JUMP_VELOCITY
-		jumps -= 1
+	if Input.is_action_just_pressed("moveJump"):
+		if is_on_floor():
+			velocity.y = JUMP_VELOCITY
+			if !DOUBLE_JUMP:
+				may_jump = false
+		elif may_jump:
+			velocity.y = JUMP_VELOCITY
+			may_jump = false
+			
+		
 		
 	# Get the input direction and handle the movement/deceleration
 	var direction = Input.get_axis("moveLeft", "moveRight")
