@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://dc0y5j6n4swwg"]
+[gd_scene load_steps=5 format=3 uid="uid://dc0y5j6n4swwg"]
 
 [ext_resource type="Script" path="res://scripts/Button.gd" id="1_2rtgm"]
+[ext_resource type="Script" path="res://scripts/SIze.gd" id="1_dsjkr"]
+[ext_resource type="Script" path="res://scripts/MenuButtons.gd" id="1_tw4fp"]
 
-[node name="MainMenu" type="Control"]
+[sub_resource type="LabelSettings" id="LabelSettings_q3rge"]
+font_size = 48
+outline_size = 4
+outline_color = Color(0.392157, 0.392157, 0.392157, 1)
+
+[node name="Menus" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="."]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -22,16 +29,101 @@ grow_vertical = 2
 color = Color(0, 0.701961, 1, 1)
 metadata/_edit_lock_ = true
 
-[node name="Button" type="Button" parent="."]
+[node name="MainMenu" type="Control" parent="."]
+anchors_preset = 0
+
+[node name="SettingsColor" type="ColorRect" parent="MainMenu"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 100.0
+offset_right = 200.0
+offset_bottom = 131.0
+color = Color(0.197937, 0.197937, 0.197937, 1)
+script = ExtResource("1_dsjkr")
+
+[node name="SettingsButton" type="Button" parent="MainMenu/SettingsColor" node_paths=PackedStringArray("path")]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.2
-anchor_right = 0.5
-anchor_bottom = 0.2
-offset_left = -20.5
-offset_right = 20.5
-offset_bottom = 31.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
+text = "Settings
+"
+script = ExtResource("1_tw4fp")
+path = NodePath("../../../Panel")
+
+[node name="PlayColor" type="ColorRect" parent="MainMenu"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 50.0
+offset_right = 200.0
+offset_bottom = 81.0
+color = Color(0.197937, 0.197937, 0.197937, 1)
+
+[node name="PlayButton" type="Button" parent="MainMenu/PlayColor"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Play"
 script = ExtResource("1_2rtgm")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+pivot_offset = Vector2(574, 324)
+color = Color(0.295867, 0.295866, 0.295866, 1)
+
+[node name="Label" type="Label" parent="Panel/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.16
+anchor_right = 1.0
+grow_horizontal = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_q3rge")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Buttons" type="Control" parent="Panel/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonColor" type="ColorRect" parent="Panel/ColorRect/Buttons"]
+layout_mode = 0
+offset_top = 40.0
+offset_right = 160.0
+offset_bottom = 80.0
+color = Color(0.194349, 0.194349, 0.194349, 1)
+
+[node name="Button" type="Button" parent="Panel/ColorRect/Buttons/ButtonColor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Example"
+alignment = 0
