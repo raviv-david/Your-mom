@@ -40,10 +40,8 @@ func _physics_process(delta):
 		else:
 			if(velocity.x > 0 && direction < 0):
 				velocity.x = move_toward(velocity.x, 0, SPEED/100)
-				print("Slowing down1")
 			elif(velocity.x < 0 && direction > 0):
-				#velocity.x = move_toward(velocity.x, 0, SPEED/100)
-				print("Slowing down2")
+				velocity.x = move_toward(velocity.x, 0, SPEED/100)
 			velocity.x += (direction * SPEED) * delta
 		velocity.x = clamp(velocity.x, -MAX_SPEED, MAX_SPEED)
 		

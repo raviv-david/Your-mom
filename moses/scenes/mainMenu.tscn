@@ -1,8 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dc0y5j6n4swwg"]
+[gd_scene load_steps=3 format=3 uid="uid://dc0y5j6n4swwg"]
 
-[ext_resource type="Script" path="res://scripts/Button.gd" id="1_2rtgm"]
-[ext_resource type="Script" path="res://scripts/SIze.gd" id="1_dsjkr"]
-[ext_resource type="Script" path="res://scripts/MenuButtons.gd" id="1_tw4fp"]
+[ext_resource type="PackedScene" uid="uid://dqbu616wt2hs1" path="res://scenes/button.tscn" id="1_5ofpj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_q3rge"]
 font_size = 48
@@ -19,7 +17,7 @@ grow_vertical = 2
 metadata/_edit_lock_ = true
 
 [node name="Background" type="ColorRect" parent="."]
-z_index = -1
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,48 +30,27 @@ metadata/_edit_lock_ = true
 [node name="MainMenu" type="Control" parent="."]
 anchors_preset = 0
 
-[node name="SettingsColor" type="ColorRect" parent="MainMenu"]
+[node name="PlayButton" parent="MainMenu" instance=ExtResource("1_5ofpj")]
 layout_mode = 0
-offset_left = 100.0
-offset_top = 100.0
-offset_right = 200.0
-offset_bottom = 131.0
-color = Color(0.197937, 0.197937, 0.197937, 1)
-script = ExtResource("1_dsjkr")
-
-[node name="SettingsButton" type="Button" parent="MainMenu/SettingsColor" node_paths=PackedStringArray("path")]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Settings
-"
-script = ExtResource("1_tw4fp")
-path = NodePath("../../../Panel")
-
-[node name="PlayColor" type="ColorRect" parent="MainMenu"]
-layout_mode = 0
-offset_left = 100.0
-offset_top = 50.0
-offset_right = 200.0
-offset_bottom = 81.0
-color = Color(0.197937, 0.197937, 0.197937, 1)
-
-[node name="PlayButton" type="Button" parent="MainMenu/PlayColor"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = -40.0
+offset_top = 80.0
+offset_right = 280.0
+offset_bottom = 160.0
 text = "Play"
-script = ExtResource("1_2rtgm")
+load_scene = "res://scenes/testMap.tscn"
 
-[node name="Panel" type="Panel" parent="."]
+[node name="SettingsButton" parent="MainMenu" node_paths=PackedStringArray("show_on_click") instance=ExtResource("1_5ofpj")]
+layout_mode = 0
+offset_left = -40.0
+offset_top = 180.0
+offset_right = 280.0
+offset_bottom = 260.0
+text = "Settings"
+action = 1
+show_on_click = NodePath("../../SettingsPanel")
+
+[node name="SettingsPanel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -81,7 +58,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="Panel"]
+[node name="ColorRect" type="ColorRect" parent="SettingsPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -92,7 +69,7 @@ scale = Vector2(0.6, 0.6)
 pivot_offset = Vector2(574, 324)
 color = Color(0.295867, 0.295866, 0.295866, 1)
 
-[node name="Label" type="Label" parent="Panel/ColorRect"]
+[node name="Label" type="Label" parent="SettingsPanel/ColorRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = -0.16
@@ -103,27 +80,10 @@ label_settings = SubResource("LabelSettings_q3rge")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Buttons" type="Control" parent="Panel/ColorRect"]
+[node name="Buttons" type="Control" parent="SettingsPanel/ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="ButtonColor" type="ColorRect" parent="Panel/ColorRect/Buttons"]
-layout_mode = 0
-offset_top = 40.0
-offset_right = 160.0
-offset_bottom = 80.0
-color = Color(0.194349, 0.194349, 0.194349, 1)
-
-[node name="Button" type="Button" parent="Panel/ColorRect/Buttons/ButtonColor"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Example"
-alignment = 0
