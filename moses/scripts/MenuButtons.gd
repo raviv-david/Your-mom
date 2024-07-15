@@ -1,7 +1,9 @@
 extends Button
 
 
-enum Actions {next_scene = 0, show_pannel = 1}
+enum Actions {next_scene = 0, show_pannel = 1, hide_pannel = 2, quit = 3}
+
+@export_file() var texture_path
 
 @export var action : Actions
 
@@ -18,6 +20,8 @@ var ENDING_POS
 func _ready():
 	STARTING_POS = position.x
 	ENDING_POS = STARTING_POS + slide_by
+	if texture_path != null:
+		$TextureRect.texture = load(texture_path)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,6 +32,10 @@ func _process(delta):
 				get_tree().change_scene_to_file(load_scene)
 			1:
 				show_on_click.visible = true
+			2:
+				show_on_click.visible = false
+			3:
+				get_tree().quit()
 	if is_hovered():
 		position.x = move_toward(position.x, ENDING_POS, sliding_speed)
 	else:

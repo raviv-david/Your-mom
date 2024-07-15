@@ -36,7 +36,7 @@ offset_left = -40.0
 offset_top = 40.0
 offset_right = 280.0
 offset_bottom = 120.0
-text = "Play"
+texture_path = "res://sprites/PlayButton.png"
 load_scene = "res://scenes/testMap.tscn"
 
 [node name="SettingsButton" parent="MainMenu" node_paths=PackedStringArray("show_on_click") instance=ExtResource("1_5ofpj")]
@@ -45,31 +45,47 @@ offset_left = -40.0
 offset_top = 160.0
 offset_right = 280.0
 offset_bottom = 240.0
-text = "Settings"
+texture_path = "res://sprites/SettingsButton.png"
 action = 1
-show_on_click = NodePath("../../SettingsPanel")
+show_on_click = NodePath("../../settings")
 
-[node name="SettingsPanel" type="Panel" parent="."]
+[node name="QuitButton" parent="MainMenu" instance=ExtResource("1_5ofpj")]
+layout_mode = 0
+offset_left = -40.0
+offset_top = 528.0
+offset_right = 280.0
+offset_bottom = 608.0
+texture_path = "res://sprites/QuitButton.png"
+action = 3
+
+[node name="settings" parent="." node_paths=PackedStringArray("show_on_click") instance=ExtResource("1_5ofpj")]
 visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
+action = 2
+show_on_click = NodePath(".")
+slide_by = 0
+sliding_speed = 0
 
-[node name="ColorRect" type="ColorRect" parent="SettingsPanel"]
+[node name="ColorRect" type="ColorRect" parent="settings"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.6, 0.6)
 pivot_offset = Vector2(574, 324)
 color = Color(0.295867, 0.295866, 0.295866, 1)
 
-[node name="Label" type="Label" parent="SettingsPanel/ColorRect"]
+[node name="Label" type="Label" parent="settings/ColorRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = -0.16
@@ -80,7 +96,7 @@ label_settings = SubResource("LabelSettings_q3rge")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Buttons" type="Control" parent="SettingsPanel/ColorRect"]
+[node name="Buttons" type="Control" parent="settings/ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
