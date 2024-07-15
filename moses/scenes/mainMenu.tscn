@@ -33,18 +33,18 @@ anchors_preset = 0
 [node name="PlayButton" parent="MainMenu" instance=ExtResource("1_5ofpj")]
 layout_mode = 0
 offset_left = -40.0
-offset_top = 80.0
+offset_top = 40.0
 offset_right = 280.0
-offset_bottom = 160.0
+offset_bottom = 120.0
 text = "Play"
 load_scene = "res://scenes/testMap.tscn"
 
 [node name="SettingsButton" parent="MainMenu" node_paths=PackedStringArray("show_on_click") instance=ExtResource("1_5ofpj")]
 layout_mode = 0
 offset_left = -40.0
-offset_top = 180.0
+offset_top = 160.0
 offset_right = 280.0
-offset_bottom = 260.0
+offset_bottom = 240.0
 text = "Settings"
 action = 1
 show_on_click = NodePath("../../SettingsPanel")

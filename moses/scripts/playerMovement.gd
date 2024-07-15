@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-const SPEED = 500
+const SPEED = 700
 const MAX_SPEED = 130
-const JUMP_VELOCITY = -193
+const JUMP_VELOCITY = -190
 const MAX_FALLING_SPEED = 650
 const GRAVITY = 450
 
@@ -12,7 +12,7 @@ var may_jump = false
 
 
 func _physics_process(delta):
-	# Apply gravity
+	 # Apply gravity
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
 		velocity.y = clamp(velocity.y, -99999, 175)
@@ -32,7 +32,7 @@ func _physics_process(delta):
 			
 		
 		
-	# Get the input direction and handle the movement/deceleration
+	# handle movement
 	var direction = Input.get_axis("moveLeft", "moveRight")
 	if direction != 0:
 		if !is_on_floor():
@@ -50,6 +50,6 @@ func _physics_process(delta):
 			$AnimatedSprite2D.flip_h = direction < 0
 	else: # Deceleration
 		velocity.x = move_toward(velocity.x, 0, SPEED/50)
-	
+		
 	# Apply movement
 	move_and_slide()
