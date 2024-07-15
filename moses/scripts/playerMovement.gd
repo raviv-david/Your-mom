@@ -7,13 +7,27 @@ const DOUBLE_JUMP_VELOCITY_MULIPLIER = 0.85
 const MAX_FALLING_SPEED = 800
 const GRAVITY = 450
 
+var on_floor = true
 var jumps = 2
+var direction = 0
 
 func _physics_process(delta):
-	var on_floor = is_on_floor()
+	maintenance(delta)
+	
+	# Handle jump
+	handle_jump()
+	
+	# Handle movement
+	handle_monement(delta)
+	
+	# Move
+	move_and_slide()
+
+func maintenance(delta):
+	on_floor = is_on_floor()
 	
 	# Get movement direction input
-	var direction = Input.get_axis("moveLeft", "moveRight")
+	direction = Input.get_axis("moveLeft", "moveRight")
 	
 	# Reset jumps
 	if on_floor: 
@@ -23,8 +37,8 @@ func _physics_process(delta):
 	if !on_floor:
 		velocity.y += GRAVITY * delta
 		velocity.y = clamp(velocity.y, -99999, 175)
-	
-	# Handle jump
+
+func handle_jump():
 	if Input.is_action_just_pressed("moveJump"):
 		match jumps:
 			2:
@@ -32,8 +46,8 @@ func _physics_process(delta):
 			1:
 				velocity.y = JUMP_VELOCITY * DOUBLE_JUMP_VELOCITY_MULIPLIER
 		jumps -= 1
-	
-	# Handle movement
+
+func handle_monement(delta):
 	if direction != 0:
 		if !on_floor: # accelerate slower in the air
 			velocity.x += ((direction * SPEED) / 3) * delta
@@ -50,5 +64,3 @@ func _physics_process(delta):
 			velocity.x = move_toward(velocity.x, 0, SPEED/50)
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED/250)
-	# Move
-	move_and_slide()
