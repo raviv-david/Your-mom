@@ -1,55 +1,54 @@
 extends CharacterBody2D
 
 const SPEED = 700
-const MAX_SPEED = 130
+const MAX_SPEED = 120
 const JUMP_VELOCITY = -190
-const MAX_FALLING_SPEED = 650
+const DOUBLE_JUMP_VELOCITY_MULIPLIER = 0.85
+const MAX_FALLING_SPEED = 800
 const GRAVITY = 450
 
-@export var DOUBLE_JUMP = false
-
-var may_jump = false
-
+var jumps = 2
 
 func _physics_process(delta):
+	var on_floor = is_on_floor()
+	
+	# Get movement direction input
+	var direction = Input.get_axis("moveLeft", "moveRight")
+	
+	# Reset jumps
+	if on_floor: 
+		jumps = 2
+	
 	 # Apply gravity
-	if not is_on_floor():
+	if !on_floor:
 		velocity.y += GRAVITY * delta
 		velocity.y = clamp(velocity.y, -99999, 175)
 	
-	if is_on_floor(): 
-		may_jump = true
-	
 	# Handle jump
 	if Input.is_action_just_pressed("moveJump"):
-		if is_on_floor():
-			velocity.y = JUMP_VELOCITY
-			if !DOUBLE_JUMP:
-				may_jump = false
-		elif may_jump:
-			velocity.y = JUMP_VELOCITY
-			may_jump = false
-			
-		
-		
-	# handle movement
-	var direction = Input.get_axis("moveLeft", "moveRight")
+		match jumps:
+			2:
+				velocity.y = JUMP_VELOCITY
+			1:
+				velocity.y = JUMP_VELOCITY * DOUBLE_JUMP_VELOCITY_MULIPLIER
+		jumps -= 1
+	
+	# Handle movement
 	if direction != 0:
-		if !is_on_floor():
-			velocity.x += ((direction * SPEED) / 2) * delta
+		if !on_floor: # accelerate slower in the air
+			velocity.x += ((direction * SPEED) / 3) * delta
 		else:
-			if(velocity.x > 0 && direction < 0):
+			if((velocity.x != 0 && direction < 0) || (velocity.x < 0 && direction > 0)):# rapidy slow down if character is changing direction
 				velocity.x = move_toward(velocity.x, 0, SPEED/100)
-			elif(velocity.x < 0 && direction > 0):
-				velocity.x = move_toward(velocity.x, 0, SPEED/100)
-			velocity.x += (direction * SPEED) * delta
+			velocity.x += (direction * SPEED) * delta # apply speed
 		velocity.x = clamp(velocity.x, -MAX_SPEED, MAX_SPEED)
 		
-		# Adjust character sprite direction
-		if $AnimatedSprite2D:
+		if $AnimatedSprite2D: # Adjust character sprite direction
 			$AnimatedSprite2D.flip_h = direction < 0
 	else: # Deceleration
-		velocity.x = move_toward(velocity.x, 0, SPEED/50)
-		
-	# Apply movement
+		if on_floor:
+			velocity.x = move_toward(velocity.x, 0, SPEED/50)
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED/250)
+	# Move
 	move_and_slide()

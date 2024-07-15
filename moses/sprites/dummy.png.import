@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi6kp8togw5pq"
-path="res://.godot/imported/OldChineseManAnimations.png-0e41a7896ae5693c2f9bfb53b0168b9c.ctex"
+uid="uid://bkcxghp11i4cv"
+path="res://.godot/imported/dummy.png-fdfb63446e8b168bd8ded96f3c557549.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/OldChineseManAnimations.png"
-dest_files=["res://.godot/imported/OldChineseManAnimations.png-0e41a7896ae5693c2f9bfb53b0168b9c.ctex"]
+source_file="res://sprites/dummy.png"
+dest_files=["res://.godot/imported/dummy.png-fdfb63446e8b168bd8ded96f3c557549.ctex"]
 
 [params]
 

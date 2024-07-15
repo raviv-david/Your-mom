@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cs2gctjrjj6pe"]
+
+[ext_resource type="Texture2D" uid="uid://bkcxghp11i4cv" path="res://sprites/dummy.png" id="1_kro06"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w8oj4"]
+radius = 9.0
+
+[node name="Dummy" type="Node2D"]
+position = Vector2(0, -16)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 3)
+scale = Vector2(0.787, 0.872)
+shape = SubResource("CapsuleShape2D_w8oj4")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(2, 0)
+texture = ExtResource("1_kro06")
