@@ -11,10 +11,16 @@ var on_floor = true
 var jumps = 2
 var direction = 0
 
+@export var attack_node : Node
+
+
+func _input(_event):
+	if Input.is_action_pressed("attack"):
+		pass
+
+
 func _physics_process(delta):
-	print(velocity.x)
 	maintenance(delta)
-	
 	# Handle jump
 	handle_jump()
 	
@@ -65,3 +71,9 @@ func handle_monement(delta):
 			velocity.x = move_toward(velocity.x, 0, SPEED/50)
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED/250)
+			
+			
+func attack_recieved(damage : int, direction):
+	velocity.x = damage * direction.x
+	velocity.y = damage * direction.y
+	

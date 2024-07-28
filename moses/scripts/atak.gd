@@ -1,13 +1,18 @@
 extends Area2D
-
-
 class_name attack
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+
+@export var damage : int = 300
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _on_body_entered(player):
+	var direction = Vector2()
+	
+	direction.x = player.position.x - self.position.x
+	direction.x = clamp(direction.x, -1, 1)
+	
+	direction.y = player.position.y - self.position.y
+	direction.y = clamp(direction.y, -1, 1)
+	
+	player.attack_recieved(damage, direction)
+	self.queue_free()
