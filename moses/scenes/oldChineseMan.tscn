@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d4b6ut2biykln"]
 
 [ext_resource type="Script" path="res://scripts/playerMovement.gd" id="1_gkeca"]
-[ext_resource type="Texture2D" uid="uid://dtuckea4swjnh" path="res://sprites/oldChineseMan.png" id="2_gvhom"]
+[ext_resource type="Texture2D" uid="uid://bn3fy467cpm8m" path="res://sprites/oldChineseMan.png" id="2_gvhom"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ldgo5"]
 radius = 5.0
@@ -18,18 +18,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="oldChineseMan" type="Node2D"]
+[node name="oldChineseMan" type="CharacterBody2D"]
 position = Vector2(0, -10)
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-collision_layer = 2
 script = ExtResource("1_gkeca")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.04, -2)
 scale = Vector2(1.065, 1.1)
 shape = SubResource("CapsuleShape2D_ldgo5")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-position = Vector2(1, -2)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_t6pny")

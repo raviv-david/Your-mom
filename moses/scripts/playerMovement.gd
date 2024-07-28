@@ -12,6 +12,7 @@ var jumps = 2
 var direction = 0
 
 func _physics_process(delta):
+	print(velocity.x)
 	maintenance(delta)
 	
 	# Handle jump
